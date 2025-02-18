@@ -31,7 +31,7 @@ function showNotes() {
   } else {
     notesObj = JSON.parse(notes);
   }
-  let noteSpace = document.getElementById("note-space");
+  let noteSpace = document.getElementById("notes-space");
   notesObj.forEach(function (element, index) {
     noteSpace.innerHTML += `
         <div class="note-card">
