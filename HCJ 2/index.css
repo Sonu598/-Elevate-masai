@@ -1,0 +1,21 @@
+header {
+  background-color: #333;
+  color: white;
+  text-align: center;
+  padding: 1em;
+}
+
+#container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.note-card {
+  width: 300px;
+  margin: 10px;
+  padding: 10px;
+  border: 1px solid #333;
+  border-radius: 5px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+}

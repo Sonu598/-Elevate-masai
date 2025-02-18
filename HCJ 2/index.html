@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Notes</title>
+    <link rel="stylesheet" href="./index.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Notes</h1>
+    </header>
+    <div id="container">
+      <div id="notes-form">
+        <input type="text" id="title" placeholder="title" />
+        <textarea id="content" placeholder="content"></textarea>
+        <select id="category">
+          <option value="work">Work</option>
+          <option value="personal">Personal</option>
+          <option value="misc">Misc</option>
+        </select>
+        <button id="add" onclick="createNote()">Add Note</button>
+      </div>
+      <div id="notes-space"></div>
+    </div>
+  </body>
+</html>
+<script src="./index.js"></script>
