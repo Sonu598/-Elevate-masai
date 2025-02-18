@@ -1,3 +1,4 @@
+document.addEventListener("DOMContentLoaded", showNotes);
 function createNote() {
   let title = document.getElementById("title").value;
   let content = document.getElementById("content").value;
@@ -20,6 +21,7 @@ function createNote() {
   content.value = "";
   category.value = "work";
   showNotes();
+  filterNote();
 }
 
 function showNotes() {
@@ -36,7 +38,7 @@ function showNotes() {
         <h3>${element.title}</h3>
         <p>${element.content}</p>
         <p>${element.category}</p>
-        <button id="${index}" onclick="deleteNode(this.id)">Delete Note</button>
+        <button id="${index}" onclick="deleteNote(this.id)">Delete Note</button>
         </div>`;
   });
   if (notesObj.length === 0) {
@@ -44,7 +46,7 @@ function showNotes() {
   }
 }
 
-function deleteNode(index) {
+function deleteNote(index) {
   let notes = localStorage.getItem("notes");
   if (notes == null) {
     notesObj = [];
@@ -56,4 +58,33 @@ function deleteNode(index) {
   showNotes();
 }
 
-document.addEventListener("DOMContentLoaded", showNotes);
+function filterNote() {
+  let filterValue = document.getElementById("filter").value;
+  let noteCards = document.getElementsByClassName("note-card");
+  Array.from(noteCards).forEach(function (element) {
+    let cardText = element.getElementsByTagName("p")[0].innerText;
+    if (cardText.includes(filterValue)) {
+      element.style.display = "block";
+    } else {
+      element.style.display = "none";
+    }
+  });
+}
+
+function sortNotes() {
+  let notes = localStorage.getItem("notes");
+  if (notes == null) {
+    notesObj = [];
+  } else {
+    notesObj = JSON.parse(notes);
+  }
+  notesObj.sort((a, b) => {
+    if (a.title < b.title) {
+      return -1;
+    } else {
+      return 1;
+    }
+  });
+  localStorage.setItem("notes", JSON.stringify(notesObj));
+  showNotes();
+}
